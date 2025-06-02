@@ -22,7 +22,7 @@ const Home = ({ searchTerm }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/movies')
+    fetch('https://scratch-server.onrender.com/movies')
       .then(res => res.json())
       .then(data => setMovies(data))
       .catch(err => console.error('Fetch error:', err));
