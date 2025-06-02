@@ -1,0 +1,254 @@
+body{
+  background-color: #0f172a; /* dark slate */
+  color: #f1f5f9; /* light text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Navbar styles */
+.navbar {
+  background-color: #1e293b;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  a{
+    text-decoration: none;
+    color: #e0f2fe;
+  }
+}
+
+.navbar-logo {
+  color: #38bdf8; /* sky blue */
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.search-input {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  width: 35%;
+  min-width: 200px;
+  background-color: #1e293b;
+  color: white;
+  border: 1px solid #38bdf8;
+}
+
+.login-button,
+.profile-button {
+  background-color: #0ea5e9;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login-button:hover,
+.profile-button:hover {
+  background-color: #0284c7;
+}
+
+.profile-container {
+  position: relative;
+}
+
+.profile-box {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: #f97316;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  width: 180px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.profile-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.username {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.logout-button {
+  background-color:#ef4444;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
+.home{
+  margin-top: 5px;
+}
+/* Banner */
+.ban-bag {
+  position: relative;
+  width: 100%;
+  height: 300px; /* You can adjust this height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* overlay */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2; /* above the image */
+  padding: 20px;
+}
+.banner h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  color: #facc15; /* yellow */
+}
+.banner p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #e0f2fe;
+}
+
+/* Card styles */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.card {
+  background-color: #1e293b; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  color: white;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #334155; /* dark slate */
+  color: #f1f5f9; /* light text */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #38bdf8;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 80%;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .banner h1 {
+    font-size: 28px;
+  }
+
+  .banner p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    gap: 10px;
+  }
+
+  .login-button,
+  .profile-button {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .banner h1 {
+    font-size: 24px;
+  }
+  .banner p{
+    font-size: 14px;
+  }
+  
+}
+/* .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.card h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+nav{
+  background-color: #bc1f1f;
+  color: white;
+  padding: 10px;
+}
+nav a{
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+} */
