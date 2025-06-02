@@ -14,7 +14,7 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/auth/signup', {
+    fetch('https://scratch-server.onrender.com/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
