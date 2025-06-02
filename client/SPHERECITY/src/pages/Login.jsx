@@ -14,7 +14,7 @@ const Login = ({ setIsLoggedIn, setUsername }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/auth/login', {
+    fetch('https://scratch-server.onrender.com/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
