@@ -7,7 +7,7 @@ const StarRating = ({ movieId }) => {
   const token = localStorage.getItem('token');
 
   const fetchAverageRating = () => {
-    fetch(`http://localhost:5000/movies/average/${movieId}`)
+    fetch(`https://scratch-server.onrender.com/movies/average/${movieId}`)
       .then(res => res.json())
       .then(data => {
         setAverage(data.averageRating || 0);
@@ -27,7 +27,7 @@ const StarRating = ({ movieId }) => {
     setRating(newRating);
     setMessage("Submitting your rating...");
 
-    fetch(`http://localhost:5000/movies/rate/${movieId}`, {
+    fetch(`https://scratch-server.onrender.com/movies/rate/${movieId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
