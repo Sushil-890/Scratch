@@ -38,7 +38,7 @@ const AddMovieForm = () => {
 
   try {
     // 1. Create Razorpay Order
-    const orderRes = await fetch("http://localhost:5000/payment/create-order", {
+    const orderRes = await fetch("https://scratch-server.onrender.com/payment/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const AddMovieForm = () => {
           cast: formData.cast.split(",").map((c) => c.trim()),
         };
 
-        const movieRes = await fetch("http://localhost:5000/movies/add", {
+        const movieRes = await fetch("https://scratch-server.onrender.com/movies/add", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
