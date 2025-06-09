@@ -31,6 +31,7 @@ const Home = ({ searchTerm }) => {
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  if (movies.length === 0) return <h1>Loading....</h1>;
 
   return (
     <div className="home">
