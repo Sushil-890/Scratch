@@ -29,6 +29,92 @@ const AddMovieForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("⚠️ Please login first!");
+    navigate("/login");
+    return;
+  }
+
+  try {
+    // 1. Create Razorpay Order
+    const orderRes = await fetch("https://scratch-server.onrender.com/payment/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ amount: 100 }), // ₹1.00 = 100 paise
+    });
+
+    const orderData = await orderRes.json();
+    if (!orderRes.ok) throw new Error(orderData.message);
+
+    // 2. Open Razorpay popup
+    const options = {
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID, // set in .env file
+      amount: orderData.amount,
+      currency: orderData.currency,
+      name: "SphereCity",
+      description: "Movie Listing Fee",
+      order_id: orderData.id,
+      handler: async function (response) {
+        alert("✅ Payment Successful");
+        alert(`🧾 Receipt: ${orderData.receipt}`);
+
+        // 3. After successful payment, add movie
+        const payload = {
+          ...formData,
+          genre: formData.genre.split(",").map((g) => g.trim()),
+          director: formData.director.split(",").map((d) => d.trim()),
+          cast: formData.cast.split(",").map((c) => c.trim()),
+        };
+
+        const movieRes = await fetch("https://scratch-server.onrender.com/movies/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const movieData = await movieRes.json();
+        if (movieRes.ok) {
+          alert("🎬 Movie added!");
+          setFormData({
+            title: "",
+            release_year: "",
+            genre: "",
+            director: "",
+            cast: "",
+            image: "",
+          });
+          navigate("/");
+        } else {
+          alert("❌ Movie not added after payment!");
+          console.error(movieData.error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+
+  } catch (error) {
+    alert("❌ Payment failed or movie not added.");
+    console.error(error.message);
+  }
+};
+
+
+/*
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const token = localStorage.getItem("token");
     const payload = {
       ...formData,
