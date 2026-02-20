@@ -13,8 +13,7 @@ require('./Models/dbconfig')
 const movierouter = require('./Routers/MovieRouter');
 app.use('/', movierouter);
 
-const paymentRoutes = require('./Routers/PaymentRoute');
-app.use('/payment', paymentRoutes);
+
 
 app.use(bodyParser.json());
 app.use('/auth',approuter)

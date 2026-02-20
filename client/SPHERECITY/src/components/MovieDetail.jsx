@@ -9,7 +9,7 @@ const MovieDetail = ({ isLoggedIn, username }) => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/movies/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/movies/${id}`)
       .then(res => res.json())
       .then(data => setMovie(data))
       .catch(err => console.error('Error fetching movie:', err));
@@ -20,7 +20,7 @@ const MovieDetail = ({ isLoggedIn, username }) => {
 
     const token = localStorage.getItem('token');
     try {
-      const res = await fetch(`http://localhost:5000/movies/comment/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/movies/comment/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ const Home = ({ searchTerm }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/movies')
+    fetch(`${import.meta.env.VITE_API_URL}/movies`)
       .then(res => res.json())
       .then(data => setMovies(data))
       .catch(err => console.error('Fetch error:', err));

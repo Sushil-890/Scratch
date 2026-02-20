@@ -7,16 +7,18 @@ body{
 .navbar {
   background-color: #1e293b;
   color: white;
-  padding: 10px;
+  padding: 10px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   justify-content: space-between;
   align-items: center;
-  a{
-    text-decoration: none;
-    color: #e0f2fe;
-  }
+}
+
+.navbar a{
+  text-decoration: none;
+  color: #e0f2fe;
+  white-space: nowrap;
 }
 
 .navbar-logo {
@@ -31,10 +33,12 @@ body{
   border: none;
   border-radius: 5px;
   width: 35%;
-  min-width: 200px;
+  min-width: 150px;
   background-color: #1e293b;
   color: white;
   border: 1px solid #38bdf8;
+  flex-grow: 1;
+  max-width: 400px;
 }
 
 .login-button,
@@ -176,12 +180,32 @@ body{
 
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .navbar-logo {
+    font-size: 1.2em;
+    order: 1;
   }
 
   .search-input {
-    width: 80%;
+    width: 100%;
+    order: 4;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .navbar a:not(.navbar-logo) {
+    font-size: 14px;
+    order: 2;
+  }
+
+  .profile-container,
+  .login-button {
+    order: 3;
   }
 
   .card {
@@ -199,13 +223,33 @@ body{
 
 @media (max-width: 480px) {
   .navbar {
-    gap: 10px;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .navbar-logo {
+    font-size: 1.1em;
+  }
+
+  .navbar a:not(.navbar-logo) {
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   .login-button,
   .profile-button {
-    padding: 8px 10px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .search-input {
     font-size: 14px;
+    padding: 5px 8px;
+  }
+
+  .profile-box {
+    right: -10px;
+    width: 150px;
   }
 
   .card {

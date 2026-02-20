@@ -4,10 +4,10 @@ const { addRating, getAverageRating, getAllMovies, getOneMovie, addComment, addM
 const { authenticate } = require('../Middleware/AuthMiddleware');
 
 router.get('/movies', getAllMovies);
-router.get('/movies/:movieId', getOneMovie); 
-router.post('/movies/rate/:movieId', authenticate, addRating); 
+router.get('/movies/:movieId', getOneMovie); // ✅ movie ID from URL
+router.post('/movies/rate/:movieId', authenticate, addRating); // ✅ only logged-in users
 router.get('/movies/average/:movieId', getAverageRating);
-router.post('/movies/comment/:movieId', authenticate, addComment); 
+router.post('/movies/comment/:movieId', authenticate, addComment); // ✅ only logged-in users
 router.post("/movies/add", authenticate, addMovie);
 
 module.exports = router;
